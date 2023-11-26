@@ -8,7 +8,7 @@ router = APIRouter()
 
 # Criar os endpoints de Cliente: GET, POST, PUT, DELETE
 
-@router.get("/cliente/", tags=["Cliente"])
+@router.get("/clientes/", tags=["Clientes"])
 def get_cliente():
     try:
         session = db.Session()
@@ -21,7 +21,7 @@ def get_cliente():
     finally:
         session.close()
 
-@router.get("/cliente/{id}", tags=["Cliente"])
+@router.get("/clientes/{id}", tags=["Clientes"])
 def get_cliente(id: int):
     try:
         session = db.Session()
@@ -33,10 +33,12 @@ def get_cliente(id: int):
     finally:
         session.close()   
 
-@router.post("/cliente/", tags=["Cliente"])
+@router.post("/clientes/", tags=["Clientes"])
 def post_cliente(corpo: Cliente):
     try:
         session = db.Session()
+
+        print(corpo)
 
         dados = ClienteDB(None, corpo.nome, corpo.matricula, corpo.cpf, corpo.telefone, corpo.grupo, corpo.senha)
 
@@ -52,7 +54,7 @@ def post_cliente(corpo: Cliente):
     finally:
         session.close()
 
-@router.put("/cliente/{id}", tags=["Cliente"])
+@router.put("/clientes/{id}", tags=["Clientes"])
 def put_cliente(id: int, corpo: Cliente):
     try:
         session = db.Session()
@@ -77,7 +79,7 @@ def put_cliente(id: int, corpo: Cliente):
     finally:
         session.close()
 
-@router.delete("/cliente/{id}", tags=["Cliente"])
+@router.delete("/clientes/{id}", tags=["Clientes"])
 def delete_cliente(id: int):
     try:
         session = db.Session()

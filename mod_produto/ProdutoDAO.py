@@ -6,7 +6,7 @@ from mod_produto.Produto import Produto
 
 router = APIRouter()
 # Criar as rotas/endpoints: GET, POST, PUT, DELETE
-@router.get("/produto/", tags=["Produto"])
+@router.get("/produtos/", tags=["Produtos"])
 def get_produto():
     try:
         session = db.Session()
@@ -19,7 +19,7 @@ def get_produto():
     finally:
         session.close()
 
-@router.get("/produto/{id}", tags=["Produto"])
+@router.get("/produtos/{id}", tags=["Produtos"])
 def get_produto(id: int):
     try:
         session = db.Session()
@@ -31,7 +31,7 @@ def get_produto(id: int):
     finally:
         session.close()   
 
-@router.post("/produto/", tags=["Produto"])
+@router.post("/produtos/", tags=["Produtos"])
 def post_produto(corpo: Produto):
     try:
         session = db.Session()
@@ -50,7 +50,7 @@ def post_produto(corpo: Produto):
     finally:
         session.close()
 
-@router.put("/produto/{id}", tags=["Produto"])
+@router.put("/produtos/{id}", tags=["Produtos"])
 def put_produto(id: int, corpo: Produto):
     try:
         session = db.Session()
@@ -71,7 +71,7 @@ def put_produto(id: int, corpo: Produto):
     finally:
         session.close()
 
-@router.delete("/produto/{id}", tags=["Produto"])
+@router.delete("/produtos/{id}", tags=["Produtos"])
 def delete_produto(id: int):
     try:
         session = db.Session()

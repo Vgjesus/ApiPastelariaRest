@@ -8,7 +8,7 @@ router = APIRouter()
 
 # Criar as rotas/endpoints: GET, POST, PUT, DELETE
 
-@router.get("/funcionario/", tags=["Funcionário"])
+@router.get("/funcionarios/", tags=["Funcionarios"])
 def get_funcionario():
     try:
         session = db.Session()
@@ -21,7 +21,7 @@ def get_funcionario():
     finally:
         session.close()
 
-@router.get("/funcionario/{id}", tags=["Funcionário"])
+@router.get("/funcionarios/{id}", tags=["Funcionarios"])
 def get_funcionario(id: int):
     try:
         session = db.Session()
@@ -33,13 +33,13 @@ def get_funcionario(id: int):
     finally:
         session.close()   
 
-@router.post("/funcionario/", tags=["Funcionário"])
+@router.post("/funcionarios/", tags=["Funcionarios"])
 def post_funcionario(corpo: Funcionario):
     try:
         session = db.Session()
 
         dados = FuncionarioDB(None, corpo.nome, corpo.matricula, corpo.cpf, corpo.telefone, corpo.grupo, corpo.senha)
-
+        
         session.add(dados)
 
         session.commit()
@@ -52,7 +52,7 @@ def post_funcionario(corpo: Funcionario):
     finally:
         session.close()
 
-@router.put("/funcionario/{id}", tags=["Funcionário"])
+@router.put("/funcionarios/{id}", tags=["Funcionarios"])
 def put_funcionario(id: int, corpo: Funcionario):
     try:
         session = db.Session()
@@ -77,7 +77,7 @@ def put_funcionario(id: int, corpo: Funcionario):
     finally:
         session.close()
 
-@router.delete("/funcionario/{id}", tags=["Funcionário"])
+@router.delete("/funcionarios/{id}", tags=["Funcionarios"])
 def delete_funcionario(id: int):
     try:
         session = db.Session()
